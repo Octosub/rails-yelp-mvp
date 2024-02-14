@@ -11,12 +11,15 @@ DISHES = ["chinese", "italian", "japanese", "french", "belgian"]
 
 require 'faker'
 
+url = "http://source.unsplash.com/featured/?#{dish}&#{rand(1000)}"
+
 2.times do
   DISHES.shuffle.each do |dish|
     Restaurant.create!(
       name: Faker::Restaurant.name,
       address: Faker::Address.street_address,
       phone_number: Faker::PhoneNumber.phone_number,
-      category: dish)
+      category: dish,
+      url: url)
   end
 end
